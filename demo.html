@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; script-src &#39;self&#39; &#39;wasm-unsafe-eval&#39; blob:; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; data: blob:; media-src &#39;self&#39; blob:; font-src &#39;self&#39; data:; connect-src &#39;self&#39; blob: data:; worker-src &#39;self&#39; blob:; child-src &#39;self&#39; blob:; form-action &#39;none&#39;; base-uri &#39;none&#39;">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Local E-Sign Pad — NavigatorsLab Tools</title>
+  <meta name="description" content="Draw or type a signature, place it on a PDF, flatten and download. Everything stays on your device." />
+  <meta name="theme-color" content="#0b0f17" />
+  <meta property="og:title" content="Local E-Sign Pad — NavigatorsLab Tools" />
+  <meta property="og:description" content="Draw or type a signature, place it on a PDF, flatten and download. Everything stays on your device." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://navigatorslab.com/tools/og-sign.png" />
+  <meta property="og:url" content="https://navigatorslab.com/tools/sign" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Local E-Sign Pad — NavigatorsLab Tools" />
+  <meta name="twitter:description" content="Draw or type a signature, place it on a PDF, flatten and download. Everything stays on your device." />
+  <meta name="twitter:image" content="https://navigatorslab.com/tools/og-sign.png" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✍️</text></svg>" />
+  <script type="module" crossorigin src="./assets/sign-2zgGDikR.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="./assets/preload-helper-Dp1pzeXC.js">
+  <link rel="modulepreload" crossorigin href="./assets/dom-CdRtKgMN.js">
+  <link rel="modulepreload" crossorigin href="./assets/pdf.worker.min-7WEkucD6.js">
+  <link rel="modulepreload" crossorigin href="./assets/agent-BXrVPJYt.js">
+  <link rel="stylesheet" crossorigin href="./assets/styles-DxO-VUmL.css"></head>
+<body>
+  <header class="nl-top">
+    <a class="brand" href="./index.html">🧭 NavigatorsLab <b>Tools</b></a>
+    <span class="spacer"></span>
+    <a class="plain" href="./index.html">← All tools</a>
+  </header>
+
+  <main class="wrap">
+    <h1>✍️ Local E-Sign Pad</h1>
+    <p class="sub">
+      Not DocuSign — just “sign this lease tonight.” Draw or type your signature, click where it goes on the
+      PDF, flatten, download. <b>Zero uploads.</b>
+    </p>
+
+    <div class="panel">
+      <h2>1 · Make your signature</h2>
+      <div class="row">
+        <select id="mode" aria-label="Signature input mode">
+          <option value="draw">Draw</option>
+          <option value="type">Type</option>
+        </select>
+        <span id="typeWrap" hidden>
+          <input type="text" id="typed" placeholder="Your name" style="width:200px" />
+          <select id="font">
+            <option value="cursive">Handwriting</option>
+            <option value="serif">Serif</option>
+          </select>
+          <label>Size <input type="number" id="fontSize" value="46" min="12" max="120" style="width:70px" /></label>
+        </span>
+      </div>
+      <canvas id="pad" width="520" height="180" style="touch-action:none; cursor:crosshair; background:#f4f6fa; border-radius:10px; max-width:100%;"></canvas>
+      <div class="row">
+        <label>Ink <input type="color" id="ink" value="#0b25c4" style="width:40px;height:30px;padding:0;border:none;background:none" /></label>
+        <label>Thickness <input type="range" id="thick" min="1" max="6" value="2" style="width:110px" /></label>
+        <button id="clear">🧽 Clear</button>
+        <button id="useSig" class="primary" disabled>2 · Use this signature →</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>3 · Place it on the PDF</h2>
+      <div class="drop" id="dz">
+        <span class="big">📕</span>
+        <b>Drop a PDF</b> or click to pick
+      </div>
+      <div class="row" id="pagesRow" hidden>
+        <label>Page</label>
+        <select id="pageSel" aria-label="PDF page"></select>
+        <label>Size</label>
+        <input type="number" id="sigW" aria-label="Signature width in PDF points" value="140" min="40" max="500" style="width:80px" /> pt wide
+        <label><input type="checkbox" id="addDate" /> stamp date</label>
+        <span class="grow" style="flex:1"></span>
+        <button id="stamp" class="primary" disabled>✅ Flatten &amp; download</button>
+      </div>
+      <div class="stat" id="stat" hidden></div>
+      <div style="overflow:auto; max-height:60vh; text-align:center;">
+        <canvas id="cv" class="prev" style="max-width:100%; cursor:copy;"></canvas>
+      </div>
+      <p class="sub" style="margin-top:8px; font-size:12.5px;">
+        After picking a PDF, click on the page where the signature should go (its center).
+      </p>
+    </div>
+  </main>
+
+  <footer class="nl-foot">
+    <span class="lock">🔒 runs 100% in your browser — no uploads, no storage, no logs</span>
+    <span>·</span><a href="./index.html">all tools</a>
+    <span>·</span><a href="https://github.com/Kayforkind/NavigatorsLab-Tools">source (MIT)</a>
+  </footer>
+
+</body>
+</html>
